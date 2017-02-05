@@ -1,0 +1,54 @@
+* {
+	margin:0px;
+	padding:0px;
+	/*border:1px solid;*/
+}
+.clearItems:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+* html .clearItems {
+    height: 1%;
+}
+#hangman {
+	float:right;
+	margin:50px 100px;
+}
+#alphabet {
+	float:left;
+	margin:100px 100px;
+}
+h1 {
+	text-align:center;
+	margin:10px;
+}
+.alpha_odd {
+	width:420px;
+	margin:0 auto;
+}
+.alpha_even {
+	width:361px;
+	margin:0 auto;
+}
+.alpha_odd button, .alpha_even button {
+	padding:10px;
+	margin:5px 3px;
+	width:50px;
+	border-radius:10px;
+}
+#startGame {
+    padding:10px;
+    margin:10px 0 10px 160px;
+    width:100px;
+    border-radius:10px;
+}
+#randomWord {
+    clear:both;
+    text-align:center;
+}
+.dashes {
+	display:inline-block;
+}
