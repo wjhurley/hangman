@@ -59,7 +59,9 @@ function btnStart() {
   //Reset global variable acting as counter for hangman images
   intWrong = 1;
   //Reset hangman image back to starting image
-  document.getElementById("mrSticky").setAttribute("src","img/hangman0.png");
+  document.getElementById("mrSticky").setAttribute("src","hangman0.png");
+  //Remove message from previous game
+  document.getElementById("gameMessage").innerHTML = " ";
   //Set new random number
   intRandom = Math.floor(Math.random() * arrDictionary.length);
   return false;
@@ -86,14 +88,14 @@ function letterGuess(strGuess) {
   strLetter.disabled = true;
   if(strWord.indexOf(strGuess) != -1) {
     //Function to show letter to user and check if game is won
-    letterGuessCorrect(strGuess);
+    letterGuessCorrect(strGuess, gameMessage);
   } else {
     //Function to show next hangman image and check if game is lost
-    letterGuessWrong();
+    letterGuessWrong(gameMessage);
   }
 }
 
-function letterGuessCorrect(strGuess) {
+function letterGuessCorrect(strGuess, gameMessage) {
   //Steps taken if user guess is right
   var intIndex = 0;
   var intZ = 0;
@@ -112,7 +114,7 @@ function letterGuessCorrect(strGuess) {
       return blnDash = true;
     } else if (intZ == strLetters.length - 1) {
       //If there are no more dashes, game is won
-      alert("Congratulations, you guessed \"" + strWord + "\" which means \"" + strMeaning + "\" according to dictionary.com.");
+      gameMessage.innerHTML = "<p>Congratulations, you guessed \"" + strWord + "\" which means \"" + strMeaning + "\" according to <a href='http://www.dictionary.com/' target='_blank'>dictionary.com</a>.</p>";
       blnDash = true;
       //Disable all alphabet buttons until new game is started
       for (var i = 0; i < document.forms[0].btnAlphabet.length; i++) {
@@ -126,7 +128,7 @@ function letterGuessCorrect(strGuess) {
   return true;
 }
 
-function letterGuessWrong() {
+function letterGuessWrong(gameMessage) {
   //Steps taken if user guess is wrong
   if (intWrong < 7) {
     //If guess is wrong, change to next hangman drawing in array
@@ -140,7 +142,7 @@ function letterGuessWrong() {
     for (var i = 0; i < document.forms[0].btnAlphabet.length; i++) {
       document.forms[0].btnAlphabet[i].disabled = true;
     }
-    alert("Sorry, you did not guess my word \"" + strWord + "\" in time to save Mr. Sticky.");
+    gameMessage.innerHTML = "<p>Sorry, you did not guess my word \"" + strWord + "\" in time to save Mr. Sticky.</p>";
     //Set focus to "New Game" button for keyboard users
     return document.getElementById("startGame").focus();
   }
@@ -149,6 +151,6 @@ function letterGuessWrong() {
 function imageChange() {
   //Load Hangman drawings into Image array and set PictureBox to first image
   var imgSticky = document.getElementById("mrSticky");
-  var strHangman = "img/hangman" + intWrong + ".png";
+  var strHangman = "hangman" + intWrong + ".png";
   return imgSticky.setAttribute("src", strHangman);
 }

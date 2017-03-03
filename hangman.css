@@ -4,22 +4,25 @@
 	/*border:1px solid;*/
 }
 .clearItems:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
 }
 * html .clearItems {
-    height: 1%;
+    height:1%;
 }
 #hangman {
-	float:right;
-	margin:50px 100px;
+	margin:20px;
 }
 #alphabet {
-	float:left;
-	margin:100px 100px;
+	margin:10px;
+	text-align:center;
+}
+#mrSticky {
+	display:block;
+	margin:auto;
 }
 h1 {
 	text-align:center;
@@ -40,14 +43,18 @@ h1 {
 	border-radius:10px;
 }
 #startGame {
-    padding:10px;
-    margin:10px 0 10px 160px;
-    width:100px;
-    border-radius:10px;
+  padding:10px;
+  margin:10px;
+  width:100px;
+  border-radius:10px;
 }
 #randomWord {
-    clear:both;
-    text-align:center;
+	height:70px;
+  text-align:center;
+}
+#gameMessage {
+	height:20px;
+	text-align:center;
 }
 .dashes {
 	display:inline-block;
